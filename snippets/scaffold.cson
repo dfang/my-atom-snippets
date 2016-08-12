@@ -1,0 +1,22 @@
+".text.html:not(.meta.tag)":
+
+  "angular scaffold":
+    "prefix": "tpl:angularfire"
+    "body": """
+      <html>
+      <head>
+        <!-- AngularJS -->
+        <script src="//cdn.jsdelivr.net/angular.all/1.2.19/angular-all.min.js"></script>
+
+        <!-- Firebase -->
+        <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+
+      </head>
+      <body ng-app>
+       $2
+      </body>
+      </html>
+    """

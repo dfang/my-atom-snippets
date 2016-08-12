@@ -1,0 +1,9 @@
+'.text.haml':
+  'content_for js do':
+    'prefix': 'content_for'
+    'body': """
+      - content_for :${1:js} do
+        :${2:coffee}
+          $ ->
+            ${3:}
+    """

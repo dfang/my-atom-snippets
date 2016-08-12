@@ -1,0 +1,32 @@
+'.source.ruby':
+  'RSpec describe':
+    'prefix': 'describe'
+    'body': 'describe "${1:class_or_method}" do\n  $0\nend'
+
+  'RSpec context':
+    'prefix': 'context'
+    'body': 'context "$1" do\n  $0\nend'
+
+  'RSpec expect':
+    'prefix': 'expect'
+    'body': 'expect($1).to $0'
+
+  'RSpec expect block':
+    'prefix': 'expectb'
+    'body': 'expect { $1 }.to $0'
+
+  'RSpec it':
+    'prefix': 'it'
+    'body': 'it "$1" do\n  $0\nend'
+
+  'RSpec let':
+    'prefix': 'let'
+    'body': 'let($1) { create $1 }'
+
+  'RSpec let!':
+    'prefix': 'let!'
+    'body': 'let!($1) { create $1 }'
+
+  'RSpec before':
+    'prefix': 'before'
+    'body': 'before do\n  $1\nend'

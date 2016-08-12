@@ -1,0 +1,18 @@
+{
+  "name": "my-atom-snippets",
+  "main": "./lib/my-atom-snippets",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "my-atom-snippets:toggle"
+  },
+  "repository": "https://github.com/atom/my-atom-snippets",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

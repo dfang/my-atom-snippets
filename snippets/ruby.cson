@@ -1,0 +1,84 @@
+'.source.ruby':
+  'binding.pry':
+    'prefix': 'pry'
+    'body': 'binding.pry'
+  'rails Logger Info':
+    'prefix': 'logger'
+    'body': 'Rails.logger.info $0'
+  'symbolize':
+    'prefix': 'symbolize'
+    'body': 'symbolize :${1:state}, in: [${2:\:pending, :confirmed, :rejected}], default: ${3:\:pending}, scopes: :shallow, methods: true'
+  'enumerize':
+    'prefix': 'enumerize'
+    'body': 'enumerize :${1:gender}, in: [${2:\:male, :female}], default: ${3:\:male}, scope: true'
+  'accepts_nested_attributes_for':
+    'prefix': 'anaf'
+    'body': "accepts_nested_attributes_for :photo, allow_destroy: true, :reject_if => proc { |attributes| attributes['name'].blank? }"
+  'with_options dependent: :destroy':
+    'prefix': 'with_options'
+    'body': '''
+      with_options dependent: :destroy do |${1:order}|
+        ${2:order}.has_many :${3:order_lines}
+      end
+    '''
+  'has_many_class_name':
+    'prefix': 'hmc'
+    'body': "has_many ${1::photos}, class_name: '${2:EpisodePhoto}'"
+  'has_many_dependent_destroy':
+    'prefix': 'hmdd'
+    'body': "has_many ${1::comments}, dependent: ${2::destroy}"
+  'has_many_through_source':
+    'prefix': 'hmts'
+    'body': 'has_many ${1::subscribers}, through: ${2::subscriptions}, source: ${3::user}'
+  'has_and_belongs_to_many':
+    'prefix': 'habtm'
+    'body': 'has_and_belongs_to_many ${1::projects}'
+  'delegate':
+    'prefix': 'delegate'
+    'body': 'delegate ${1::hello}, to: ${2::greeter}, prefix: ${3:true}, allow_nil: ${4:true}'
+  'begin_of_association_chain':
+    'prefix': 'boac'
+    'body': 'begin_of_association_chain'
+  'end_of_association_chain':
+    'prefix': 'eoac'
+    'body': 'end_of_association_chain'
+  'collection method for ransack':
+    'prefix': 'ransack_collection'
+    'body': '''
+      def collection
+        @q = end_of_association_chain.search(params[:q])
+        @${1:} ||= @q.result(distinct: true).page(params[:page])
+      end
+    '''
+  'create!':
+    'prefix': 'create!'
+    'body': """
+      create! do |success, failure|
+        success.html { redirect_to collection_path }
+        failure.html { render :new }
+      end
+    """
+  'update!':
+    'prefix': 'update!'
+    'body': """
+      update! do |success, failure|
+        success.html { redirect_to resource_path(resource) }
+        failure.html { render :new }
+      end
+    """
+  'respond_to':
+    'prefix': 'respond_to'
+    'body': """
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    """
+  'case':
+    'prefix': 'case'
+    'body': """
+      case object
+      when condition
+      else
+      end
+    """

@@ -1,0 +1,319 @@
+'.source.js':
+  '$.ajax()':
+    'prefix': 'ajax'
+    'body': '''
+      $.ajax({
+        url: '${1:/path/to/file}',
+        ${2:type: '${3:default GET (Other values: POST)}',}
+        ${4:dataType: '${5:default: Intelligent Guess (Other values: xml, json, script, or html)}',}
+        ${6:data: {
+          param1: 'value1'}
+        }
+      })${7:.done(function(data, textStatus, jqXHR) {
+        \n\tconsole.log("success");}\n
+      })${8:.fail(function(jqXHR, textStatus, errorThrown) {
+        \n\tconsole.log("error");}\n
+      })${9:.always(function(data|jqXHR, textStatus, jqXHR|errorThrown) {
+        \n\tconsole.log("complete");}\n
+      });
+      .then(function( data, textStatus, jqXHR ) {}, function( jqXHR, textStatus, errorThrown ) {});
+    '''
+
+  '$(\'#select DOM Element\')':
+    'prefix': '$'
+    'body': '\$(\'${1:string/element/array/function/jQuery object/string, context}\')$0'
+
+  'jQuery(document).ready':
+    'prefix': 'ready'
+    'body': 'jQuery(document).ready(function(\$) {\n\t$1\n});$0'
+
+  '$(document).ready':
+    'prefix': 'ready'
+    'body': '\$(document).ready(function() {\n\t$1\n});$0'
+
+  'document.ready - $(function()':
+    'prefix': 'ready'
+    'body': '\$(function() {\n\t$1\n});$0'
+
+  'document on click or change event':
+    'prefix': 'on'
+    'body': """
+      $(document).on('${1:change}', '${2:element}', function(e){
+        ${3:// todo}
+      })
+    """
+
+  '$.ajaxSend()':
+    'prefix': 'ajaxSend'
+    'body': '\$.ajaxSend(function(${1:event, xhr, settings}) {\n\t${2:/* stuff to do before an AJAX request is sent */};\n});\n$0'
+
+  '$.ajaxStart()':
+    'prefix': 'ajaxStart'
+    'body': '\$.ajaxStart(function() {\n\t${1:/* Stuff to do when an AJAX call is started and no other AJAX calls are in progress */};\n});\n$0'
+
+  '$.ajaxStop()':
+    'prefix': 'ajaxStop'
+    'body': '\$.ajaxStop((function() {\n\t${1:/* stuff to do when all AJAX calls have completed */};\n});\n$0'
+
+  '$.ajaxSuccess()':
+    'prefix': 'ajaxSuccess'
+    'body': '\$.ajaxSuccess(function(event, xhr, settings) {\n\t${1:/* executes whenever an AJAX request completes successfully */}\n});$0'
+
+  '$.ajaxError':
+    'prefix': 'ajaxError'
+    'body': 'ajaxError(function(${1:event, xhr, settings, thrownError}) {\n\t${2:/* Stuff to do when an AJAX call returns an error */};\n});$0'
+
+  '$.ajaxComplete()':
+    'prefix': 'ajaxComplete'
+    'body': 'ajaxComplete(function(event, xhr, settings) {\n\t${1:/* executes whenever an AJAX request completes */}\n});$0'
+
+  '.load':
+    'prefix': 'load'
+    'body': 'load(\'/path/to/file\',{\n${2:param1: "value1", param2: "value2"\} },\n\tfunction(){\n\t${3:/* Stuff to do after the page is loaded */}\n});\n$0'
+
+  '$.get':
+    'prefix': 'get'
+    'body': '\$.get(\'${1:/path/to/file}\', function(data) {\n\t${3:/*optional stuff to do after success */}\n/});$0'
+
+  '$.getJSON()':
+    'prefix': 'getJSON'
+    'body': '\$.getJSON(\'${1:/path/to/file}\'${2:, {param1: \'value1\'\\}}, function(json, textStatus) {\n\t\t${3:/*optional stuff to do after success */}\n});$0'
+
+  '$.getScript()':
+    'prefix': 'getScript'
+    'body': '\$.getScript(\'${1:path/to/file}\', function(data, textStatus) {\n\t${3:/*optional stuff to do after getScript */ }\n});$0'
+
+  '$.post()':
+    'prefix': 'post'
+    'body': '\$.post(\'${1:/path/to/file}\'${2:, param1: \'value1\'}, function(data, textStatus, xhr) {\n\t${3:/*optional stuff to do after success */}\n});$0'
+
+  '$.map()':
+    'prefix': 'map'
+    'body': '\$.map(${1:array}, function(${2:item}${3:, ${4:index}}) {\n\t${5:return ${6:something};}\n});'
+
+  '$.each()':
+    'prefix': 'each'
+    'body': '\$.each(${1:array/object}, function(${2:index}${3:, ${4:val}}) {\n\t${0: /* iterate through array or object */}\n});'
+
+  '.animate() with callback':
+    'prefix': 'animate'
+    'body': 'animate({\n\t${2:param1}: ${3:value1}${4:,\n\t${5:param2}: ${6:value2}}},\n\t${7:speed}, function() {\n\t${0:/* stuff to do after animation is complete */}\n});'
+
+  '.bind':
+    'prefix': 'bind'
+    'body': 'bind(\'${1:event name}\', ${2:eventData}, function(${3:event}) {\n\t${0:/* Act on the event */}\n});'
+
+  '.delegate':
+    'prefix': 'delegate'
+    'body': 'delegate(\'${1:selector}\', \'${2:eventType}\', function(${4:event}) {\n\t$1\n});$0'
+
+  '.undelegate()':
+    'prefix': 'undelegate'
+    'body': 'undelegate(\'${1:selector}\', \'${2:event type}\', \'${3:function}\');'
+
+  '.unbind()':
+    'prefix': 'unbind'
+    'body': 'unbind(\'${1:event name(s)}\'${2:functionName})$0'
+
+  '.animate()':
+    'prefix': 'animate'
+    'body': 'animate({\n\t${2:param1}: ${3:value1}${4:,\n\t${5:param2}: ${6:value2}}},\n\t${7:speed}, function() {\n\t${0:/* stuff to do after animation is complete */}\n});'
+
+  '$.when()':
+    'prefix': 'when'
+    'body': '\$.when(${1:deferreds});\n$0'
+
+  '.then':
+    'prefix': 'then'
+    'body': 'then(${1:doneCallbacks}, ${2:failCallbacks})$0'
+
+  '.promise()':
+    'prefix': 'promise'
+    'body': 'promise(${1:\'${2:type}\'${3:, target} })$0'
+
+  '.resolve':
+    'prefix': 'resolve'
+    'body': 'resolve(${1:args})$0'
+
+  'resolveWith':
+    'prefix': 'resolveWith'
+    'body': 'resolveWith(${1:context}${2:, args})$0'
+
+  'console.log':
+    'prefix': 'log'
+    'body': 'console.log($1)'
+
+  "use strict":
+    "prefix": "use"
+    "body": """
+    'use strict';
+    """
+
+  "immediately-invoked function expression":
+    "prefix": "iife"
+    "body": """
+    (function() {
+      "use strict";
+
+      ${1:}
+    })();
+    """
+
+  "function":
+    "prefix": "fn"
+    "body": """
+    function ${1:methodName} (${2:arguments}) {
+      ${0:// body...}
+    }
+    """
+
+  "function as a property of an object":
+    "prefix": "ofn"
+    "body": """
+    ${1:functionName}: function(${2:arguments}) {
+      ${3:// body...}
+    }
+    """
+
+  "anonymous function":
+    "prefix": "afn"
+    "body": """
+    function(${1:arguments}) {
+      ${0:// body...}
+    }
+    """
+
+  "prototype":
+    "prefix": "proto"
+    "body": """
+    ${1:ClassName}.prototype.${2:methodName} = function(${3:arguments}) {
+      ${0:// body...}
+    }
+    """
+
+  "function apply":
+    "prefix": "apply"
+    "body": """
+    ${1:methodName}.apply(${2:context}, [${3:arguments}])
+    """
+
+  "function call":
+    "prefix": "call"
+    "body": """
+    ${1:methodName}.call(${2:context}, ${3:arguments})
+    """
+
+  "for in":
+    "prefix": "fi"
+    "body": """
+    for (${1:prop} in ${2:obj}) {
+      if (${2:obj}.hasOwnProperty(${1:prop})) {
+        ${0:// body...}
+      }
+    }
+    """
+
+  "forEach":
+    "prefix": "fe"
+    "body": """
+    ${1:myArray}.forEach(function(${2:elem}) {
+      ${0:// body...}
+    });
+    """
+
+  "module.exports":
+    "prefix": "me"
+    "body": """
+    module.exports = ${1:name};
+    """
+
+  "require":
+    "prefix": "req"
+    "body": """
+    require('${1:module}');
+    """
+
+  "process.exit":
+    "prefix": "pe"
+    "body": """
+    process.exit(${1:code});
+    """
+
+  "setTimeout":
+    "prefix": "setTimeout"
+    "body": """
+    setTimeout(function() {
+      ${0:// body...}
+    }, ${1:delay});
+    """
+
+  "setInterval":
+    "prefix": "setInterval"
+    "body": """
+    setInterval(function() {
+      ${0:// body...}
+    }, ${1:delay});
+    """
+
+  "if, else if, else":
+    'prefix': 'ieie'
+    'body': """
+      if (${1:true}) {
+        $2
+      } else if (${3:false}) {
+        $4
+      } else {
+        $5
+      }
+    """
+
+  "switch case":
+    'prefix': 'switch'
+    'body': """
+      switch (expression) {
+        case "A":
+        case "B":
+          break;
+        default:
+          break;
+      }
+    """
+
+  "try catch":
+    'prefix': 'try'
+    'body': """
+      try { try_statements }
+      catch (exception_var_1 if condition_1) { // non-standard catch_statements_1 }
+      catch (exception_var_2) { catch_statements_2 }]
+      finally { finally_statements }
+    """
+
+  "when then pattern":
+    'prefix': 'when'
+    'body': """
+      $.when($.getJSON('/some/data/'), $.get('template.tpl')).then(function (data, tmpl) {
+        $(tmpl) // create a jQuery object out of the template
+        .tmpl(data) // compile it
+        .appendTo("#target"); // insert it into the DOM
+      });
+    """
+
+  "Create a Promise for DOM ready and the two AJAX requests and wait for all of them to be fulfilled":
+    'prefix': 'getReady'
+    'body': """
+      function getReady() {
+        var deferredReady = $.Deferred();
+        $(document).ready(function() {
+          deferredReady.resolve();
+        });
+        return deferredReady.promise();
+      }
+
+      var firstRequest = $.ajax({ url: 'url1' }),
+          secondRequest = $.ajax({ url: 'url2' });
+
+      $.when( getReady(), firstRequest, secondRequest)
+        .done( function( readyResponse, firstResponse, secondResponse ) {
+          // do something
+        });
+    """
